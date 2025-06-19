@@ -177,32 +177,11 @@ function generateHTML(icons) {
         transform: translateY(-2px);
       }
 
-      .icon-group h3 {
-        font-size: 1.125rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        color: #FF69B5; /* lollipop */
-        text-transform: capitalize;
-      }
-
-      .icon-group-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 1rem;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-
-      .icon-group-header h3 {
-        margin-bottom: 0;
-        flex: 1;
-      }
-
       .variant-badges {
         display: flex;
         gap: 0.375rem;
         flex-wrap: wrap;
+        margin-bottom: 1rem;
       }
 
       .icon-variants {
@@ -430,25 +409,15 @@ function generateHTML(icons) {
         grid.innerHTML = groupNames.map(baseName => {
           const variants = groups[baseName];
           
-          // Convert to PascalCase with better handling
-          const pascalCaseName = baseName
-            .split(/[-_\\s]+/) // Split on hyphens, underscores, or spaces (one or more)
-            .filter(word => word.length > 0) // Remove empty strings
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-            .join('');
-          
           // Get unique variants for this group
           const availableVariants = [...new Set(variants.map(icon => icon.variant))];
           
           return \`
             <div class="icon-group">
-              <div class="icon-group-header">
-                <h3>\${pascalCaseName}</h3>
-                <div class="variant-badges">
-                  \${availableVariants.map(variant => \`
-                    <span class="variant-badge variant-\${variant}">\${variant}</span>
-                  \`).join('')}
-                </div>
+              <div class="variant-badges">
+                \${availableVariants.map(variant => \`
+                  <span class="variant-badge variant-\${variant}">\${variant}</span>
+                \`).join('')}
               </div>
               <div class="icon-variants">
                 \${variants.map(icon => \`
