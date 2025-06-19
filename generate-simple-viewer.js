@@ -543,7 +543,3 @@ const html = generateHTML(icons)
 fs.writeFileSync(outputFile, html, 'utf8')
 
 console.log(`✅ Generated simple icon viewer: ${outputFile}`)
-console.log('\n🚀 To view the icons:')
-console.log('   1. Open simple-icon-viewer.html in your browser')
-console.log('   2. Or serve it with: npx serve .')
-console.log('   3. Or use: python -m http.server 8000')
