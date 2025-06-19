@@ -1,0 +1,97 @@
+# Dependencies
+node_modules
+
+# Source files (only dist should be published)
+libs/
+src/
+
+# Build and development files
+tsconfig.json
+tsconfig.build.json
+*.tsbuildinfo
+vite.config.ts
+vitest.config.ts
+
+# Configuration files
+eslint.config.js
+prettier.config.js
+commitlint.config.ts
+commitlint.config.js
+lint-staged.config.js
+release.config.js
+.nvmrc
+
+# Scripts and build utilities
+scripts/
+generate-simple-viewer.js
+simple-icon-viewer.html
+
+# Temporary and cache directories
+.temp/
+.cache/
+
+# Git and version control
+.git/
+.gitignore
+.husky/
+
+# GitHub workflows and templates
+.github/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+coverage/
+.nyc_output/
+test/
+tests/
+__tests__/
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+
+# Development tools
+.yalc/
+yalc.lock
+
+# Documentation (keep README.md but exclude others)
+docs/
+*.md
+!README.md
+SVG_GUIDELINES.md
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Lock files (package-lock.json can be large and not needed in published package)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Raw icon assets (if you want to exclude the source icons directory)
+icons/
