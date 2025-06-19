@@ -386,11 +386,9 @@ function generateHTML(icons) {
         const groups = {};
         
         icons.forEach(icon => {
-          // Extract base name by removing common suffixes
-          let baseName = icon.name;
-          
-          // Remove variant-specific suffixes if they exist
-          baseName = baseName.replace(/-(outline|solid|misc)$/, '');
+          // Use the actual icon name as the base name
+          // The variants are determined by the directory (outline, solid, misc)
+          const baseName = icon.name;
           
           if (!groups[baseName]) {
             groups[baseName] = [];
@@ -432,9 +430,10 @@ function generateHTML(icons) {
         grid.innerHTML = groupNames.map(baseName => {
           const variants = groups[baseName];
           
-          // Convert to PascalCase
+          // Convert to PascalCase with better handling
           const pascalCaseName = baseName
-            .split(/[-_\s]/)
+            .split(/[-_\\s]+/) // Split on hyphens, underscores, or spaces (one or more)
+            .filter(word => word.length > 0) // Remove empty strings
             .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
             .join('');
           
