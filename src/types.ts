@@ -27,7 +27,8 @@ export interface MarginProps {
 export interface IconProps extends SVGProps<SVGSVGElement>, MarginProps {
   size?: number | string
   color?: string
-  strokeWidth?: number | string
+  strokeWidth?: number
+  rotate?: number
 }
 
 export type Icon = React.ForwardRefExoticComponent<
