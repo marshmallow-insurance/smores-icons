@@ -1,0 +1,21 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-miterlimit="10"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path
+    fill-rule="evenodd"
+    d="M14.673 18.210 C14.730 18.431 14.760 18.662 14.760 18.900 C14.760 20.424 13.524 21.660 12.000 21.660 C10.476 21.660 9.240 20.424 9.240 18.900 C9.240 18.662 9.270 18.431 9.327 18.210"
+  />
+  <path
+    fill-rule="evenodd"
+    d="M21.200 17.980 H2.800 L6.480 11.540 V6.940 C6.480 3.891 8.951 1.420 12.000 1.420 C15.049 1.420 17.520 3.891 17.520 6.940 V11.540 L21.200 17.980 Z"
+  />
+</svg>

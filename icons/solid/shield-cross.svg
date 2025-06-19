@@ -1,0 +1,12 @@
+<svg
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M12 0L2 6V12C2.131 16.865 3.794 21.316 12 24C20.206 21.316 21.869 16.865 22 12V6L12 0ZM17 12H13V19H11V12H7V10H11V6H13V10H17V12Z"
+    fill="currentColor"
+  />
+</svg>

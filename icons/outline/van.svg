@@ -1,0 +1,20 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path fill-rule="evenodd" d="M6.250 14.456 V14.464" />
+  <path fill-rule="evenodd" d="M17.750 14.456 V14.464" />
+  <path
+    fill-rule="evenodd"
+    d="M21.036 21.036 V11.501 C21.036 11.288 20.994 11.077 20.913 10.880 V7.482 C20.913 6.392 20.913 4.760 20.913 3.785 C20.913 3.331 20.546 2.964 20.092 2.964 L10.357 2.964 C9.836 2.964 5.621 2.964 3.798 2.964 C3.340 2.964 2.970 3.340 2.977 3.798 L3.087 10.880 C3.006 11.077 2.964 11.289 2.964 11.501 V21.036"
+  />
+  <path fill-rule="evenodd" d="M21.036 17.750 H2.964" />
+  <path fill-rule="evenodd" d="M3.375 11.179 H20.625" />
+</svg>

@@ -1,0 +1,35 @@
+<svg
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect
+    x="8.77197"
+    y="12.0734"
+    width="2"
+    height="9.57672"
+    rx="1"
+    transform="rotate(45 8.77197 12.0734)"
+    fill="currentColor"
+  />
+  <rect
+    x="7.36572"
+    y="13.4797"
+    width="2"
+    height="6"
+    rx="1"
+    transform="rotate(-45 7.36572 13.4797)"
+    fill="currentColor"
+  />
+  <rect
+    x="20.8159"
+    y="5.71826"
+    width="2"
+    height="14.7792"
+    rx="1"
+    transform="rotate(45 20.8159 5.71826)"
+    fill="currentColor"
+  />
+</svg>

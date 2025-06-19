@@ -1,0 +1,31 @@
+<svg
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path
+    fill-rule="evenodd"
+    d="M2.62598 20.2159L1.47598 15.9229C0.967984 14.0259 2.09298 12.0769 3.98998 11.5689L14.292 8.80887C16.189 8.30087 18.138 9.42587 18.646 11.3229L19.796 15.6159"
+  />
+  <path fill-rule="evenodd" d="M3.48389 19.986L4.40389 23.42" />
+  <path fill-rule="evenodd" d="M18.937 15.8448L19.627 18.4198" />
+  <path fill-rule="evenodd" d="M4.90698 14.9949L4.90898 15.0029" />
+  <path fill-rule="evenodd" d="M15.209 12.2339L15.212 12.2429" />
+  <path
+    fill-rule="evenodd"
+    d="M2.27198 12.0289L1.12198 7.7359C0.61398 5.8399 1.73898 3.8909 3.63598 3.3819L10.504 1.5419C12.401 1.0339 14.35 2.1589 14.858 4.0559L16.008 8.3489"
+  />
+  <path fill-rule="evenodd" d="M8.34302 14.0829L9.49302 18.3759" />
+  <path fill-rule="evenodd" d="M11.7771 13.1628L12.9271 17.4558" />
+  <path fill-rule="evenodd" d="M1.76709 20.4459L20.6541 15.3849" />
+  <path
+    fill-rule="evenodd"
+    d="M17.3411 23.4199C17.7531 22.2549 18.8641 21.4199 20.1701 21.4199C21.4761 21.4199 22.5871 22.2549 22.9991 23.4199"
+  />
+</svg>

@@ -1,0 +1,13 @@
+<svg
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    fill-rule="evenodd"
+    d="M22 0H2C0.896 0 0 0.896 0 2V17C0 18.104 0.896 19 2 19H8L12 24L16 19H22C23.104 19 24 18.104 24 17V2C24 0.896 23.104 0 22 0Z"
+    fill="currentColor"
+  />
+</svg>

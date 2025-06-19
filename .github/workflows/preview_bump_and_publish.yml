@@ -1,0 +1,12 @@
+name: Preview Bump and Publish
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  preview-bump-and-publish:
+    uses: marshmallow-insurance/campfire/.github/workflows/shared-semantic-release-preview.yml@main
+    secrets: inherit

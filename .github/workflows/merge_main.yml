@@ -1,0 +1,66 @@
+name: Build and Fossa Check
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-fossa-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Setup Node 👾
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install and Build 🔧
+        run: |
+          npm ci
+          npm run generate
+          npm run check-types
+      - name: Fossa dependency analysis 🐛
+        uses: fossas/fossa-action@93a52ecf7c3ac7eb40f5de77fd69b1a19524de94
+        with:
+          api-key: ${{ secrets.FOSSA_API_KEY }}
+
+  deploy-icon-viewer:
+    runs-on: ubuntu-latest
+    needs: build-and-fossa-check
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 👾
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies 📦
+        run: npm ci
+
+      - name: Generate icon viewer 🎨
+        run: npm run simple-viewer
+
+      - name: Setup Pages 📄
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact 📤
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './simple-icon-viewer.html'
+
+      - name: Deploy to GitHub Pages 🚀
+        uses: actions/deploy-pages@v4
