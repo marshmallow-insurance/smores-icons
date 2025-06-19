@@ -75,7 +75,7 @@ describe('generateReactComponent', () => {
       )
 
       expect(result).toContain(
-        `{ ref, size, m, mx, my, ml, mr, mt, mb, style, ...props }: IconProps & { ref?: React.Ref<SVGSVGElement> }`,
+        `{ ref, size, rotate, m, mx, my, ml, mr, mt, mb, style, ...props }: IconProps & { ref?: React.Ref<SVGSVGElement> }`,
       )
       expect(result).toContain(`ref={ref}`)
       expect(result).toContain(`width={size || '24'}`)

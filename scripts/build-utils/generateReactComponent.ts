@@ -17,9 +17,18 @@ export function generateReactComponent(
 import { generateMarginStyles } from '../utils/spacing'
 import SvgComponent from '${relativeSvgPath}?react'
 
-const ${componentName} = ({ ref, size, m, mx, my, ml, mr, mt, mb, style, ...props }: IconProps & { ref?: React.Ref<SVGSVGElement> }) => {
+const ${componentName} = ({ ref, size, rotate, m, mx, my, ml, mr, mt, mb, style, ...props }: IconProps & { ref?: React.Ref<SVGSVGElement> }) => {
   const marginStyles = generateMarginStyles({ m, mx, my, ml, mr, mt, mb })
-  const combinedStyles = { ...marginStyles, ...style }
+  
+  // Handle rotation transform
+  const rotateTransform = rotate ? \`rotate(\${rotate}deg)\` : undefined
+  const transform = rotateTransform ? rotateTransform : undefined
+  
+  const combinedStyles = { 
+    ...marginStyles, 
+    ...(transform && { transform }), 
+    ...style 
+  }
   
   return (
     <SvgComponent 
