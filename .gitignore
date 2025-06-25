@@ -13,7 +13,7 @@ build/
 /src/icons/*.ts
 /src/icons/*.tsx
 /src/generated-exports.ts
-simple-icon-viewer.html
+gh-pages/index.html
 
 # IDE
 .vscode/

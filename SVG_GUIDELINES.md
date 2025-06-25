@@ -2,21 +2,32 @@
 
 Quick reference for adding SVG icons to the package.
 
-## 📋 Required SVG Structure
+## 📋 Outline icon structure
 
 ```svg
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
   viewBox="0 0 24 24"
-  fill="none"
-  stroke="none"
-  stroke-width="0"
+  fill="currentColor"
+>
+  <path d="..." />
+</svg>
+```
+
+## 📋 Solid icon structure
+
+```svg
+<svg
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  stroke="currentColor"
+  stroke-width="2"
   stroke-linecap="round"
   stroke-linejoin="round"
 >
-  <path d="..." fill="currentColor" />
+  <path d="..." />
 </svg>
 ```
 
@@ -25,7 +36,8 @@ Quick reference for adding SVG icons to the package.
 - **Size**: 24x24 canvas with `viewBox="0 0 24 24"`
 - **Root SVG**: Use `fill="none"`, `stroke="none"`, `stroke-width="0"`
 - **Paths**: Use `fill="currentColor"` on path elements
-- **Naming**: Use kebab-case: `my-icon.svg` → `<MyIcon />`
+- **Naming**: Use kebab-case: `my-icon.svg` → `<MyIcon />` and name same SVG
+  name for variants
 - **Elements**: Use `<path>`, `<circle>`, `<rect>`, `<line>` only
 
 ## ❌ Don't Use

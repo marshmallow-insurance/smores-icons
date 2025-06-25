@@ -28,7 +28,7 @@ jobs:
       - name: Install and Build 🔧
         run: |
           npm ci
-          npm run generate
+          npm run generate-icons
           npm run check-types
       - name: Fossa dependency analysis 🐛
         uses: fossas/fossa-action@93a52ecf7c3ac7eb40f5de77fd69b1a19524de94
@@ -52,12 +52,12 @@ jobs:
         run: npm ci
 
       - name: Generate icon viewer 🎨
-        run: npm run simple-viewer
+        run: npm run generate-gh-pages
 
       - name: Prepare deployment directory 📁
         run: |
           mkdir -p _site
-          cp simple-icon-viewer.html _site/index.html
+          cp gh-pages/index.html _site/index.html
 
       - name: Setup Pages 📄
         uses: actions/configure-pages@v4

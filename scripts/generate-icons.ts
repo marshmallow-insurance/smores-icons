@@ -16,7 +16,7 @@ function processVariantFolder(variant: Variant): ProcessedIcon[] {
 /**
  * Main build function
  */
-async function buildIcons(): Promise<void> {
+async function generateIcons(): Promise<void> {
   console.log('🎨 Building icon components...\n')
 
   if (!setupDirectories()) {
@@ -37,4 +37,4 @@ async function buildIcons(): Promise<void> {
   console.log(`📁 React components: src/icons/`)
 }
 
-buildIcons()
+generateIcons()
