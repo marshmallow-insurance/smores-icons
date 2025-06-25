@@ -1,5 +1,5 @@
 {
-  "name": "@mrshmllw/react-icons",
+  "name": "@mrshmllw/icons",
   "version": "1.0.0",
   "description": "Internal icons package for Marshmallow",
   "type": "module",
@@ -28,7 +28,7 @@
     "generate-gh-pages": "npm run generate-icons && tsx gh-pages/generateGhPages.ts",
     "prepublishOnly": "npm run build",
     "prepare": "husky",
-    "pre-commit-lint": "npm run check-types && lint-staged",
+    "pre-commit-lint": "npm run check-types && npm run validate:svg && lint-staged",
     "commitlint": "commitlint --edit"
   },
   "devDependencies": {
@@ -66,7 +66,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marshmallow-insurance/react-icons.git"
+    "url": "git+https://github.com/marshmallow-insurance/smores-icons.git"
   },
   "author": "Marshmallow Team",
   "license": "MIT"
