@@ -52,12 +52,12 @@ jobs:
         run: npm ci
 
       - name: Generate icon viewer 🎨
-        run: npm run simple-viewer
+        run: npm run generate-gh-pages
 
       - name: Prepare deployment directory 📁
         run: |
           mkdir -p _site
-          cp simple-icon-viewer.html _site/index.html
+          cp gh-pages/index.html _site/index.html
 
       - name: Setup Pages 📄
         uses: actions/configure-pages@v4

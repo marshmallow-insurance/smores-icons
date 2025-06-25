@@ -112,7 +112,7 @@ There are two ways to view all available icons:
 npm run simple-viewer
 ```
 
-This generates a standalone HTML file (`simple-icon-viewer.html`) that:
+This generates a standalone HTML file (`index.html`) that:
 
 - Directly reads SVG files from the `icons/` folders
 - Requires **no build step** or React components
@@ -137,7 +137,6 @@ you need to verify the exact component names and exports.**
 ## Adding Icons
 
 1. Add SVG to the appropriate variant folder:
-
    - `icons/outline/my-icon.svg` → `MyIconOutline`
    - `icons/solid/my-icon.svg` → `MyIconSolid`
    - `icons/misc/my-icon.svg` → `MyIconMisc`

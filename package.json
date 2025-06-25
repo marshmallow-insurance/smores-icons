@@ -15,8 +15,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "npm run generate && npm run build:package",
-    "generate": "tsx scripts/generate-icon-components.ts",
+    "build": "npm run generate-icons && npm run build:package",
+    "generate-icons": "tsx scripts/generate-icons.ts",
     "build:package": "vite build",
     "clean": "rm -rf dist && rm -rf ./src/icons/*.ts && rm -rf ./src/icons/*.tsx && rm -rf ./src/generated-exports.ts",
     "dev": "vite build --watch",
@@ -24,8 +24,8 @@
     "test:watch": "vitest --watch",
     "validate:svg": "tsx scripts/validate-svg.ts",
     "test:ui": "vitest --ui",
-    "check-types": "npm run generate && tsc --noEmit",
-    "simple-viewer": "npm run generate && node generate-simple-viewer.js",
+    "check-types": "npm run generate-icons && tsc --noEmit",
+    "generate-gh-pages": "npm run generate-icons && tsx gh-pages/generateGhPages.ts",
     "prepublishOnly": "npm run build",
     "prepare": "husky",
     "pre-commit-lint": "npm run check-types && lint-staged",

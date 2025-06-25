@@ -23,8 +23,7 @@ release.config.js
 
 # Scripts and build utilities
 scripts/
-generate-simple-viewer.js
-simple-icon-viewer.html
+gh-pages/
 
 # Temporary and cache directories
 .temp/
