@@ -28,7 +28,7 @@ jobs:
       - name: Install and Build 🔧
         run: |
           npm ci
-          npm run generate
+          npm run generate-icons
           npm run check-types
       - name: Fossa dependency analysis 🐛
         uses: fossas/fossa-action@93a52ecf7c3ac7eb40f5de77fd69b1a19524de94
