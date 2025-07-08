@@ -12,7 +12,7 @@ export function generateReactComponent(
   file: string,
   variant: Variant,
 ): ProcessedIcon {
-  const iconFileName = path.basename(file)
+  const iconFileName = path.basename(file, '.svg')
   const baseName = changeCase.pascalCase(iconFileName)
   const componentName = `${baseName}${VARIANT_SUFFIX_MAP[variant]}`
   const relativeSvgPath = `../../icons/${variant}/${file}`
