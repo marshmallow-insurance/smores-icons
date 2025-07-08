@@ -1,19 +1,23 @@
+import * as changeCase from 'change-case'
+import fs from 'fs'
+import path from 'path'
 import { Variant } from '../../src/types'
-import { VARIANT_SUFFIX_MAP } from './constants'
-import { kebabToPascalCase } from './kebabToPascalCase'
+import {
+  ProcessedIcon,
+  REACT_OUTPUT_DIR,
+  VARIANT_SUFFIX_MAP,
+} from './constants'
 
-/**
- * Generate React component content
- */
 export function generateReactComponent(
-  iconName: string,
+  file: string,
   variant: Variant,
-  relativeSvgPath: string,
-): string {
-  const baseName = kebabToPascalCase(iconName)
+): ProcessedIcon {
+  const iconFileName = path.basename(file)
+  const baseName = changeCase.pascalCase(iconFileName)
   const componentName = `${baseName}${VARIANT_SUFFIX_MAP[variant]}`
+  const relativeSvgPath = `../../icons/${variant}/${file}`
 
-  return `import { IconProps } from '../types'
+  const reactComponentContent = `import { IconProps } from '../types'
 import { generateMarginStyles } from '../utils/spacing'
 import SvgComponent from '${relativeSvgPath}?react'
 
@@ -45,4 +49,14 @@ ${componentName}.displayName = '${componentName}'
 
 export default ${componentName}
 `
+
+  const reactOutputPath = path.join(REACT_OUTPUT_DIR, `${componentName}.tsx`)
+
+  fs.writeFileSync(reactOutputPath, reactComponentContent)
+  console.log(`  ✅ Generated ${componentName}`)
+
+  return {
+    componentName,
+    exportStatement: `export { default as ${componentName} } from './icons/${componentName}'`,
+  }
 }

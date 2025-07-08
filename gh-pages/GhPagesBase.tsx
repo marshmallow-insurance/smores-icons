@@ -5,12 +5,10 @@ interface GhPagesBaseProps {
   icons: Icon[]
 }
 
-// Generates static HTML for GitHub Pages with embedded vanilla JS
+// generates static HTML for GitHub Pages with embedded vanilla JS
 export function GhPagesBase({ icons }: GhPagesBaseProps) {
-  // Serialize icons data for client-side use
   const iconsJson = JSON.stringify(icons, null, 2)
 
-  // Organize styles into logical sections for better maintainability
   const styles = generateStyles()
   const clientScript = generateClientScript(iconsJson)
 
@@ -27,7 +25,6 @@ export function GhPagesBase({ icons }: GhPagesBaseProps) {
         <style dangerouslySetInnerHTML={{ __html: styles }} />
       </head>
       <body>
-        {/* Header Section */}
         <header className="header" role="banner">
           <h1>Marshmallow Icons</h1>
           <div className="controls">
@@ -59,7 +56,6 @@ export function GhPagesBase({ icons }: GhPagesBaseProps) {
           </div>
         </header>
 
-        {/* Main Content */}
         <main className="container">
           <div className="stats" id="stats" aria-live="polite"></div>
           <div className="icon-grid" id="iconGrid" role="grid"></div>
@@ -75,9 +71,7 @@ export function GhPagesBase({ icons }: GhPagesBaseProps) {
   )
 }
 
-// Separate function to generate styles for better organization
 function generateStyles(): string {
-  // Extract common values for consistency
   const spacing = {
     xs: '0.25rem',
     sm: '0.375rem',
@@ -407,7 +401,6 @@ function generateStyles(): string {
   `
 }
 
-// Separate function to generate client-side JavaScript
 function generateClientScript(iconsJson: string): string {
   return `
     // Icon data and state management

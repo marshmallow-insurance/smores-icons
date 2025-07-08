@@ -1,10 +1,9 @@
 import { Variant } from '../../src/types'
 
-/**
- * Check for hardcoded colors (variant-specific)
- */
-export function validateColors(content: string, variant: Variant): string[] {
-  // Misc variant allows hardcoded colors
+export function validateHardCodedColors(
+  content: string,
+  variant: Variant,
+): string[] {
   if (variant === 'misc') {
     return []
   }
@@ -15,7 +14,6 @@ export function validateColors(content: string, variant: Variant): string[] {
     return !allowedValues.includes(value.trim())
   }
 
-  // Extract colors from direct attributes (fill="..." stroke="..." color="..." etc.)
   const colorAttributes = [
     'fill',
     'stroke',
@@ -28,6 +26,7 @@ export function validateColors(content: string, variant: Variant): string[] {
     'stroke-opacity',
   ]
 
+  // Finds all color-related attributes and their values in the SVG content
   const attributePattern = new RegExp(
     `(${colorAttributes.join('|')})=["']([^"']+)["']`,
     'gi',
@@ -37,18 +36,18 @@ export function validateColors(content: string, variant: Variant): string[] {
     (match) => match[2],
   )
 
-  // Extract colors from style attributes (style="fill: ...; stroke: ...")
+  // Extracts the content of style attributes from the SVG
   const styleAttributes = Array.from(
     content.matchAll(/style=["']([^"']+)["']/gi),
   ).map((match) => match[1])
 
+  // Finds fill and stroke color values within CSS style declarations
   const styleColors = styleAttributes.flatMap((styleContent) =>
     Array.from(styleContent.matchAll(/(fill|stroke)\s*:\s*([^;]+)/gi)).map(
       (match) => match[2],
     ),
   )
 
-  // Combine all color values and check for hardcoded ones
   const allColors = [...directAttributes, ...styleColors]
   const hasInvalidColors = allColors.some(hasHardcodedColor)
 

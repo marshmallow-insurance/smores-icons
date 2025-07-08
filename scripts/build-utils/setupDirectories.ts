@@ -1,9 +1,6 @@
 import fs from 'fs'
 import { ICONS_DIR, REACT_OUTPUT_DIR } from './constants'
 
-/**
- * Setup required directories
- */
 export function setupDirectories(): boolean {
   if (!fs.existsSync(ICONS_DIR)) {
     console.log('Icons directory not found. Creating it...')

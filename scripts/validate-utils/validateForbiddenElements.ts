@@ -1,6 +1,5 @@
 import { Variant } from '../../src/types'
 
-// Forbidden elements
 export const FORBIDDEN_ELEMENTS = [
   'text',
   'image',
@@ -12,9 +11,6 @@ export const FORBIDDEN_ELEMENTS = [
   'mask',
 ] as const
 
-/**
- * Check for forbidden elements
- */
 export function validateForbiddenElements(
   elements: string[],
   variant: Variant,
@@ -24,7 +20,7 @@ export function validateForbiddenElements(
   }
 
   const forbiddenFound = elements.filter((el) =>
-    FORBIDDEN_ELEMENTS.includes(el as any),
+    FORBIDDEN_ELEMENTS.includes(el as (typeof FORBIDDEN_ELEMENTS)[number]),
   )
 
   return forbiddenFound.length > 0

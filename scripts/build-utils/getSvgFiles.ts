@@ -3,9 +3,6 @@ import path from 'path'
 import { Variant } from '../../src/types'
 import { ICONS_DIR } from './constants'
 
-/**
- * Get SVG files from variant folder
- */
 export function getSvgFiles(variant: Variant): string[] {
   const folderPath = path.join(ICONS_DIR, variant)
 

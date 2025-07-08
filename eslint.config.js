@@ -5,6 +5,11 @@ const config = [
   {
     ignores: ['src/react'],
   },
+  {
+    rules: {
+      'no-console': 'off',
+    },
+  },
 ]
 
 export default config
