@@ -1,3 +1,9 @@
+## [1.0.2](https://github.com/marshmallow-insurance/smores-icons/compare/v1.0.1...v1.0.2) (2025-07-08)
+
+### Bug Fixes
+
+* vite config changes for better treeshaking and bundling ([#30](https://github.com/marshmallow-insurance/smores-icons/issues/30)) ([5c83916](https://github.com/marshmallow-insurance/smores-icons/commit/5c83916d04946c66530759808fdf02f9f3a9b166))
+
 ## [1.0.1](https://github.com/marshmallow-insurance/smores-icons/compare/v1.0.0...v1.0.1) (2025-07-08)
 
 ### Bug Fixes
