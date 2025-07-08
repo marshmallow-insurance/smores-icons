@@ -1,6 +1,6 @@
 {
   "name": "@mrshmllw/icons",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Internal icons package for Marshmallow",
   "type": "module",
   "main": "dist/index.js",

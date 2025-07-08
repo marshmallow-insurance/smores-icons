@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/marshmallow-insurance/smores-icons/compare/v1.0.0...v1.0.1) (2025-07-08)
+
+### Bug Fixes
+
+* remove .svg from filename before generating icons ([#28](https://github.com/marshmallow-insurance/smores-icons/issues/28)) ([b50529e](https://github.com/marshmallow-insurance/smores-icons/commit/b50529e084b08bb6efc71923c4afff0bece2d33c))
+
 ## 1.0.0 (2025-07-08)
 
 ### Features
