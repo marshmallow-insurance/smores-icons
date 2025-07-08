@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { validateColors } from '../validateColors'
+import { validateHardCodedColors } from '../validateHardCodedColors'
 
-describe('validateColors', () => {
+describe('validateHardCodedColors', () => {
   const ERROR_MESSAGE = 'Contains hardcoded colors - use "currentColor" instead'
 
   describe('misc variant', () => {
@@ -12,11 +12,11 @@ describe('validateColors', () => {
           <circle fill="hsl(120, 100%, 50%)" stroke="hsla(240, 100%, 50%, 0.8)"/>
         </svg>
       `
-      expect(validateColors(svgContent, 'misc')).toEqual([])
+      expect(validateHardCodedColors(svgContent, 'misc')).toEqual([])
     })
 
     it('should allow empty content', () => {
-      expect(validateColors('', 'misc')).toEqual([])
+      expect(validateHardCodedColors('', 'misc')).toEqual([])
     })
   })
 
@@ -52,7 +52,7 @@ describe('validateColors', () => {
       ]
 
       it.each(allowedTestCases)('should allow $name', ({ input }) => {
-        expect(validateColors(input, testVariant)).toEqual([])
+        expect(validateHardCodedColors(input, testVariant)).toEqual([])
       })
     })
 
@@ -106,7 +106,7 @@ describe('validateColors', () => {
 
       it.each(forbiddenTestCases)('should reject $name', ({ color }) => {
         const svgContent = `<svg><path fill="${color}"/></svg>`
-        const result = validateColors(svgContent, testVariant)
+        const result = validateHardCodedColors(svgContent, testVariant)
 
         expect(result).toHaveLength(1)
         expect(result[0]).toBe(ERROR_MESSAGE)

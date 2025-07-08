@@ -1,9 +1,6 @@
 import fs from 'fs'
 import { Variant } from '../../src/types'
 
-/**
- * Check file size (variant-specific)
- */
 export function validateFileSize(filePath: string, variant: Variant): string[] {
   const warnings: string[] = []
 

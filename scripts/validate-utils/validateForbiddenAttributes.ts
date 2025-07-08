@@ -1,4 +1,3 @@
-// Forbidden attributes
 export const FORBIDDEN_ATTRIBUTES = [
   'id',
   'class',
@@ -7,9 +6,6 @@ export const FORBIDDEN_ATTRIBUTES = [
   'color',
 ] as const
 
-/**
- * Check for forbidden attributes
- */
 export function validateForbiddenAttributes(
   attributes: Record<string, string>,
 ): string[] {

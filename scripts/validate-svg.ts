@@ -5,10 +5,10 @@ import path from 'path'
 import { Variant } from '../src/types'
 import { extractSvgAttributes } from './validate-utils/extractSvgAttributes'
 import { getUniqueElementNames } from './validate-utils/getUniqueElementNames'
-import { validateColors } from './validate-utils/validateColors'
 import { validateFileSize } from './validate-utils/validateFileSize'
 import { validateForbiddenAttributes } from './validate-utils/validateForbiddenAttributes'
 import { validateForbiddenElements } from './validate-utils/validateForbiddenElements'
+import { validateHardCodedColors } from './validate-utils/validateHardCodedColors'
 import { validateKebabCase } from './validate-utils/validateKebabCase'
 import { validateRequiredAttributes } from './validate-utils/validateRequiredAttributes'
 
@@ -22,34 +22,6 @@ interface ValidationResult {
   warnings: string[]
 }
 
-/**
- * Run all validation checks on SVG content
- */
-function runValidationChecks(
-  content: string,
-  filePath: string,
-  variant: Variant,
-): Pick<ValidationResult, 'errors' | 'warnings'> {
-  const filename = path.basename(filePath)
-  const attributes = extractSvgAttributes(content)
-  const uniqueElements = getUniqueElementNames(content)
-
-  const errors = [
-    ...validateKebabCase(filename),
-    ...validateRequiredAttributes(attributes, variant),
-    ...validateForbiddenAttributes(attributes),
-    ...validateForbiddenElements(uniqueElements, variant),
-    ...validateColors(content, variant),
-  ]
-
-  const warnings = [...validateFileSize(filePath, variant)]
-
-  return { errors, warnings }
-}
-
-/**
- * Validate a single SVG file
- */
 function validateSvg(filePath: string, variant: Variant): ValidationResult {
   const filename = path.basename(filePath)
   const result: ValidationResult = {
@@ -61,10 +33,21 @@ function validateSvg(filePath: string, variant: Variant): ValidationResult {
 
   try {
     const content = fs.readFileSync(filePath, 'utf-8')
-    const { errors, warnings } = runValidationChecks(content, filePath, variant)
+    const attributes = extractSvgAttributes(content)
+    const uniqueElements = getUniqueElementNames(content)
 
-    result.errors = errors
+    const errors = [
+      ...validateKebabCase(filename),
+      ...validateRequiredAttributes(attributes, variant),
+      ...validateForbiddenAttributes(attributes),
+      ...validateForbiddenElements(uniqueElements, variant),
+      ...validateHardCodedColors(content, variant),
+    ]
+    const warnings = [...validateFileSize(filePath, variant)]
+
     result.warnings = warnings
+    result.errors = errors
+
     result.valid = errors.length === 0
   } catch (error) {
     result.errors = [`Failed to read file: ${error}`]
@@ -74,9 +57,6 @@ function validateSvg(filePath: string, variant: Variant): ValidationResult {
   return result
 }
 
-/**
- * Print section of results with consistent formatting
- */
 function printResultSection(
   title: string,
   results: ValidationResult[],
@@ -94,11 +74,15 @@ function printResultSection(
   })
 }
 
-/**
- * Print validation summary
- */
-function printSummary(validCount: number, invalidCount: number): void {
+function printResults(allResults: ValidationResult[]): boolean {
+  const validFiles = allResults.filter((r) => r.valid)
+  const invalidFiles = allResults.filter((r) => !r.valid)
+  const validCount = validFiles.length
+  const invalidCount = invalidFiles.length
   const totalCount = validCount + invalidCount
+
+  printResultSection('✅ Valid files', validFiles)
+  printResultSection('❌ Invalid files', invalidFiles)
 
   console.log('\n📊 Summary:')
   console.log(`   📝 Total icons: ${totalCount}`)
@@ -109,26 +93,11 @@ function printSummary(validCount: number, invalidCount: number): void {
   } else {
     console.log('   ✅ All icons are valid!')
   }
-}
-
-/**
- * Print validation results and return whether all files are valid
- */
-function printResults(allResults: ValidationResult[]): boolean {
-  const validFiles = allResults.filter((r) => r.valid)
-  const invalidFiles = allResults.filter((r) => !r.valid)
-
-  printResultSection('✅ Valid files', validFiles)
-  printResultSection('❌ Invalid files', invalidFiles)
-  printSummary(validFiles.length, invalidFiles.length)
 
   return invalidFiles.length === 0
 }
 
-/**
- * Get SVG files from a variant folder
- */
-function getSvgFilesFromFolder(folderPath: string): string[] {
+function getSvgFilesFromFolderPath(folderPath: string): string[] {
   if (!fs.existsSync(folderPath)) {
     return []
   }
@@ -139,12 +108,9 @@ function getSvgFilesFromFolder(folderPath: string): string[] {
     .map((file) => path.join(folderPath, file))
 }
 
-/**
- * Validate all SVG files in a variant folder
- */
-function validateVariantFolder(variant: Variant): ValidationResult[] {
+function validateIconVariantFolder(variant: Variant): ValidationResult[] {
   const folderPath = path.join(ICONS_DIR, variant)
-  const svgFiles = getSvgFilesFromFolder(folderPath)
+  const svgFiles = getSvgFilesFromFolderPath(folderPath)
 
   if (svgFiles.length === 0) {
     const message = fs.existsSync(folderPath)
@@ -158,9 +124,6 @@ function validateVariantFolder(variant: Variant): ValidationResult[] {
   return svgFiles.map((filePath) => validateSvg(filePath, variant))
 }
 
-/**
- * Main validation function
- */
 function validateAllSvgs(): void {
   console.log('🎨 Validating SVG icons...\n')
 
@@ -169,9 +132,9 @@ function validateAllSvgs(): void {
     process.exit(1)
   }
 
-  const allResults = SUPPORTED_VARIANTS.flatMap(validateVariantFolder).filter(
-    Boolean,
-  )
+  const allResults = SUPPORTED_VARIANTS.flatMap(
+    validateIconVariantFolder,
+  ).filter(Boolean)
 
   if (allResults.length === 0) {
     console.log('📁 No SVG files found to validate')
@@ -184,5 +147,4 @@ function validateAllSvgs(): void {
   }
 }
 
-// Run validation
 validateAllSvgs()

@@ -1,6 +1,3 @@
-/**
- * Check if filename follows kebab-case convention
- */
 export function validateKebabCase(filename: string): string[] {
   const errors: string[] = []
 

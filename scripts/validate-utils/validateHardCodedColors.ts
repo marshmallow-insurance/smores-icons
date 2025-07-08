@@ -1,10 +1,9 @@
 import { Variant } from '../../src/types'
 
-/**
- * Check for hardcoded colors (variant-specific)
- */
-export function validateColors(content: string, variant: Variant): string[] {
-  // Misc variant allows hardcoded colors
+export function validateHardCodedColors(
+  content: string,
+  variant: Variant,
+): string[] {
   if (variant === 'misc') {
     return []
   }
@@ -15,7 +14,6 @@ export function validateColors(content: string, variant: Variant): string[] {
     return !allowedValues.includes(value.trim())
   }
 
-  // Extract colors from direct attributes (fill="..." stroke="..." color="..." etc.)
   const colorAttributes = [
     'fill',
     'stroke',
@@ -37,7 +35,6 @@ export function validateColors(content: string, variant: Variant): string[] {
     (match) => match[2],
   )
 
-  // Extract colors from style attributes (style="fill: ...; stroke: ...")
   const styleAttributes = Array.from(
     content.matchAll(/style=["']([^"']+)["']/gi),
   ).map((match) => match[1])
@@ -48,7 +45,6 @@ export function validateColors(content: string, variant: Variant): string[] {
     ),
   )
 
-  // Combine all color values and check for hardcoded ones
   const allColors = [...directAttributes, ...styleColors]
   const hasInvalidColors = allColors.some(hasHardcodedColor)
 
