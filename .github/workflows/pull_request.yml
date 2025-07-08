@@ -17,7 +17,7 @@ jobs:
       - name: Install and Check Types 🔧
         run: |
           npm ci
-          npm run generate
+          npm run generate-icons
           npm run check-types
       - name: Validate SVG Icons 🎨
         run: |
