@@ -26,6 +26,7 @@ export function validateHardCodedColors(
     'stroke-opacity',
   ]
 
+  // Finds all color-related attributes and their values in the SVG content
   const attributePattern = new RegExp(
     `(${colorAttributes.join('|')})=["']([^"']+)["']`,
     'gi',
@@ -35,10 +36,12 @@ export function validateHardCodedColors(
     (match) => match[2],
   )
 
+  // Extracts the content of style attributes from the SVG
   const styleAttributes = Array.from(
     content.matchAll(/style=["']([^"']+)["']/gi),
   ).map((match) => match[1])
 
+  // Finds fill and stroke color values within CSS style declarations
   const styleColors = styleAttributes.flatMap((styleContent) =>
     Array.from(styleContent.matchAll(/(fill|stroke)\s*:\s*([^;]+)/gi)).map(
       (match) => match[2],

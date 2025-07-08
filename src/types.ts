@@ -1,9 +1,7 @@
 import { SVGProps } from 'react'
 
-// Supported icon variants
 export type Variant = 'outline' | 'solid' | 'misc'
 
-// Spacing types for margin props
 export type Spacing =
   | '8px'
   | '12px'
