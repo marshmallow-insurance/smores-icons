@@ -42,6 +42,13 @@ export default defineConfig({
           react: 'React',
           'react-dom': 'ReactDOM',
         },
+        preserveModules: true,
+        preserveModulesRoot: 'src',
+        exports: 'named',
+        entryFileNames: ({ name }) => {
+          // Keep the original file structure and names
+          return `${name}.js`
+        },
       },
     },
   },
