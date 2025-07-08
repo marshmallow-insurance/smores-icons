@@ -45,6 +45,10 @@ export default defineConfig({
         preserveModules: true,
         preserveModulesRoot: 'src',
         exports: 'named',
+        entryFileNames: ({ name }) => {
+          // Keep the original file structure and names
+          return `${name}.js`
+        },
       },
     },
   },
