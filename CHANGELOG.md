@@ -1,3 +1,9 @@
+## [1.0.3](https://github.com/marshmallow-insurance/smores-icons/compare/v1.0.2...v1.0.3) (2025-07-09)
+
+### Bug Fixes
+
+* adds react/jsx-runtime import to resolve correctly ([#34](https://github.com/marshmallow-insurance/smores-icons/issues/34)) ([6b81721](https://github.com/marshmallow-insurance/smores-icons/commit/6b817213dd9655d95a7d9de053d2b2fc2b111b24))
+
 ## [1.0.2](https://github.com/marshmallow-insurance/smores-icons/compare/v1.0.1...v1.0.2) (2025-07-08)
 
 ### Bug Fixes
