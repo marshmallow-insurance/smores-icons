@@ -49,6 +49,11 @@ export default defineConfig({
           // Keep the original file structure and names
           return `${name}.js`
         },
+        // Ensure external dependencies use correct import paths
+        paths: {
+          react: 'react',
+          'react-dom': 'react-dom',
+        },
       },
     },
   },
