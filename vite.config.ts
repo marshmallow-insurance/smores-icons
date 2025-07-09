@@ -36,23 +36,23 @@ export default defineConfig({
       fileName: 'index',
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
+          'react/jsx-runtime': 'React',
         },
         preserveModules: true,
         preserveModulesRoot: 'src',
         exports: 'named',
         entryFileNames: ({ name }) => {
-          // Keep the original file structure and names
           return `${name}.js`
         },
-        // Ensure external dependencies use correct import paths
         paths: {
           react: 'react',
           'react-dom': 'react-dom',
+          'react/jsx-runtime': 'react/jsx-runtime',
         },
       },
     },
