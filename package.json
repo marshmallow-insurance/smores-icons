@@ -44,7 +44,7 @@
     "change-case": "^5.4.4",
     "eslint": "^9.35.0",
     "husky": "^9.1.7",
-    "jsdom": "^26.1.0",
+    "jsdom": "^27.0.0",
     "lint-staged": "^16.1.6",
     "prettier": "^3.6.2",
     "react": "^19.1.0",
